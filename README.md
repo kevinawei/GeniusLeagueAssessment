@@ -3,8 +3,8 @@
 # All source code can be found in ProcessGameState.py and GeniusLeague.ipynb
 
 # 1. 
-# a. 
-## When initializing a ProcessGameState object, it takes in a parquet file and using pandas read_parquet function loads the data into a pandas datafram
+## a. 
+### When initializing a ProcessGameState object, it takes in a parquet file and using pandas read_parquet function loads the data into a pandas datafram
 ``` python
 p1 = ProcessGameState('game_state_frame_data.parquet')
 ```
@@ -15,14 +15,14 @@ class ProcessGameState():
         self.df = pd.read_parquet(filename, engine='pyarrow')
 
 ```
-# b. 
-## Now we set the boundary from the coordinates provided and call the GetBoundaryRows method with said boundary
+## b. 
+### Now we set the boundary from the coordinates provided and call the GetBoundaryRows method with said boundary
 ```python
 boundary = [((-1735, 250),(-2024,398)), ((-2024,398), (-2806, 742)),((-2806,742), (-2472, 1233)), ((-2472, 1233),(-1565, 580)), ((-1565, 580), (-1735,250))] #edges of boundary defined here
 rows = p1.getBoundaryRows(boundary)
 ```
 
-## The getBoundaryRows method iterates through all rows of our pandas dataframe and calls the checkBoundary method to check the coordinates extracted from each individual row
+### The getBoundaryRows method iterates through all rows of our pandas dataframe and calls the checkBoundary method to check the coordinates extracted from each individual row
 
 ```python
     def getBoundaryRows(self, boundary):
@@ -33,7 +33,7 @@ rows = p1.getBoundaryRows(boundary)
                  withinBoundary.append(row[0])
         return withinBoundary
 ```
-## This method first checks that given coordinate's z bound is within a certain range before implementing the raycast algorith. This algorithm determines if a given point is inside of a given polygon by 
+### This method first checks that given coordinate's z bound is within a certain range before implementing the raycast algorith. This algorithm determines if a given point is inside of a given polygon by 
 ```python
     def checkBoundary(self,c, boundary): # uses the raycast odd number rule to detect if a point is within the boundaries of a polygon
         x,y,z = c
@@ -49,8 +49,8 @@ rows = p1.getBoundaryRows(boundary)
 
             return count%2 == 1
 ```
-# c.
+## c.
 
-## Method to extract weapon types from a row
+### Method to extract weapon types from a row
 
 ![](/sceenshots/weapons.png)
