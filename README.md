@@ -54,3 +54,23 @@ rows = p1.getBoundaryRows(boundary)
 ### Method to extract weapon types from a row
 
 ![](/screenshots/weapons.png)
+
+
+# 2
+## a. 
+
+## We can see from the below code snippet that Team 2 was in the specified boundary during only a singular round and only with 2 of their players, thus it was not a common strategy for them to enter via this boundary
+
+![](/screenshots/2a.png)
+
+## We can plot the data to see all the individual coordinates compared to the boundary lines
+
+![](/screenshots/2a2.png)
+
+
+## b. 
+
+
+## c.
+
+![](/screenshots/2c.png)
