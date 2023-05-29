@@ -20,13 +20,19 @@ class ProcessGameState():
             return count%2 == 1
 
     
-    def GetBoundaryRows(self, boundary):
+    def getBoundaryRows(self, boundary):
         withinBoundary = []
         for row in self.df.iterrows():
             c = (row[1].x, row[1].y, row[1].z) # create list to hold singular xyz coordinate for each row
             if self.checkBoundary(c, boundary):
                  withinBoundary.append(row[0])
         return withinBoundary
+    
+    def extractWeaponClass(self, row):
+        weapons = []
+        for item in row['inventory']:
+            weapons.append(item['weapon_class'])
+        return weapons
 
 
 
@@ -35,7 +41,7 @@ class ProcessGameState():
 def main():
     p1 = ProcessGameState('game_state_frame_data.parquet')
     boundary = [((-1735, 250),(-2024,398)), ((-2024,398), (-2806, 742)),((-2806,742), (-2472, 1233)), ((-2472, 1233),(-1565, 580)), ((-1565, 580), (-1735,250))] #edges of boundary defined here
-    rows = p1.GetBoundaryRows(boundary)
+    rows = p1.getBoundaryRows(boundary)
     for i in rows:
         row = p1.df.iloc[i]
         team = row['team']
