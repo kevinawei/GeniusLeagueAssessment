@@ -4,10 +4,7 @@
 
 # 1. 
 ## a. 
-### When initializing a ProcessGameState object, it takes in a parquet file and using pandas read_parquet function loads the data into a pandas datafram
-``` python
-p1 = ProcessGameState('game_state_frame_data.parquet')
-```
+### When initializing a ProcessGameState object, it takes in a parquet file and using pandas read_parquet function loads the data into a pandas dataframe
 
 ``` python
 class ProcessGameState():
@@ -15,6 +12,12 @@ class ProcessGameState():
         self.df = pd.read_parquet(filename, engine='pyarrow')
 
 ```
+
+``` python
+p1 = ProcessGameState('game_state_frame_data.parquet')
+```
+
+
 ## b. 
 ### Now we set the boundary from the coordinates provided and call the GetBoundaryRows method with said boundary
 ```python
