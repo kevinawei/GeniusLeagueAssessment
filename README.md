@@ -53,4 +53,4 @@ rows = p1.getBoundaryRows(boundary)
 
 ### Method to extract weapon types from a row
 
-![](/sceenshots/weapons.png)
+![](/screenshots/weapons.png)
