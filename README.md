@@ -64,7 +64,7 @@ rows = p1.getBoundaryRows(boundary)
 # 2
 ## a. 
 
-## We can see from the below code snippet that Team 2 was in the specified boundary during only a singular round and only with 2 of their players, thus it was not a common strategy for them to enter via this boundary
+## We can see from the output below that Team 2 was in the specified boundary during only a singular round and only with 2 of their players, thus it was not a common strategy for them to enter via this boundary
 
 ![](/screenshots/2a.png)
 
@@ -74,8 +74,8 @@ rows = p1.getBoundaryRows(boundary)
 
 
 ## b. 
-## The methodology for retrieving the average timer that Team 2 on T side enters BombsiteB with at least 2 rifles or SMGs is as follows. Firstly the getRows method is called to return rows given the filters specified. Once those rows have been retrieved, we traverse the rows and store the first instance per player per round into a 2d array (the index of the array should matchup with the round number - 1, if the team in question is team 2 then the index will matchup with the round number -16). This marks the first time that a player has entered BombsiteB in a given round. We can then traverse our 2d array and extract the weapon classes from the inventory of these rows and check if they contain SMG or Rifle. If they do then we append them to a new 1d array which we then pass to another function if the number of rows in the array exceeds the number of requested weapons (in this case it's 2 weapons so if it has a length >= 2). This getTimer() function sorts the array by the attribute['seconds'] and returns the earliest instance where >= 2 rows entered the area. Since the array is sorted we can denote this with the index [weaponCount-1]. We then take the average of the seconds for each round that meets the criteria and return that value.
-
+## The methodology for retrieving the average timer that Team 2 on T side enters BombsiteB with at least 2 rifles or SMGs is as follows. 
+## Firstly the getRows method is called to return rows given the filters specified. 
 ```python
     def getRows(self, area, team, side): # get rows filtered by area, team, and side
         rows = []
@@ -85,7 +85,7 @@ rows = p1.getBoundaryRows(boundary)
                 rows.append(row)
         return rows
 ```
-
+## Once those rows have been retrieved, we traverse the rows and store the first instance per player per round into a 2d array (the index of the array should matchup with the round number - 1, if the team in question is team 2 then the index will matchup with the round number -16). This marks the first time that a player has entered BombsiteB in a given round. 
 ``` python
 def enterArea(rows):# function which returns a 2d array indexed by round number, within each round contains rows of data for first instance of player data for that round
     playerIndex = -1
@@ -102,7 +102,12 @@ def enterArea(rows):# function which returns a 2d array indexed by round number,
         tRound = round_num
         tPlayer = player
     return rows_by_round
-    
+```
+## We can then traverse our 2d array and extract the weapon classes from the inventory of these rows and check if they contain SMG or Rifle. If they do then we append them to a new 1d array which we then pass to another function if the number of rows in the array exceeds the number of requested weapons (in this case it's 2 weapons so if it has a length >= 2). This getTimer() function sorts the array by the attribute['seconds'] and returns the earliest instance where >= 2 rows entered the area. Since the array is sorted we can denote this with the index [weaponCount-1]. We then take the average of the seconds for each round that meets the criteria and return that value.
+
+
+
+```python
 def getTimer(rows, weaponCount):  
     sorted_rows = sorted(rows, key=lambda x: x['seconds'], reverse=False)
     print("Requirements met at: "+ str(sorted_rows[weaponCount-1]['seconds'])+" seconds")
