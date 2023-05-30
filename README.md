@@ -103,7 +103,7 @@ def enterArea(rows):# function which returns a 2d array indexed by round number,
         tPlayer = player
     return rows_by_round
 ```
-## We can then traverse our 2d array and extract the weapon classes from the inventory of these rows and check if they contain SMG or Rifle. If they do then we append them to a new 1d array which we then pass to another function if the number of rows in the array exceeds the number of requested weapons (in this case it's 2 weapons so if it has a length >= 2). This getTimer() function sorts the array by the attribute['seconds'] and returns the earliest instance where >= 2 rows entered the area. Since the array is sorted we can denote this with the index [weaponCount-1]. We then take the average of the seconds for each round that meets the criteria and return that value.
+## We can then traverse our 2d array and extract the weapon classes from the inventory of these rows and check if they contain SMG or Rifle. If they do then we append them to a new 1d array which we then pass to another function if the number of rows in the array exceeds the number of requested weapons (in this case it's 2 weapons so if it has a length >= 2). This getTimer() function sorts the array by the attribute['seconds'] and returns the earliest instance where >= 2 players entered the area. Since the array is sorted the value in question is at index [weaponCount-1]. We then take the average of the seconds for each round that meets the criteria and return that value.
 
 
 
@@ -113,9 +113,10 @@ def getTimer(rows, weaponCount):
     print("Requirements met at: "+ str(sorted_rows[weaponCount-1]['seconds'])+" seconds")
     return sorted_rows[weaponCount-1]['seconds']
 ```
-## Here is the code for the outer most method
+## Here is the code for the outer most method which can be reused to search for the earliest instance of a team entering a given area on a given side with a specific gun count
 ```python
-def getAvgTime(p, area, team, side, gunCount): # function to get average time entering a certain area by a team on a specific side with a specified number of SMGs or Rifles
+
+def getAvgTime(p, area, team, side, gunCount): # function to get average time entering a certain area by a team on a specific side with a specified number of SMGs or Rifles. p is a ProcessGameState object
     rows = p.getRows(area, team, side)
     rows_by_round = enterArea(rows)
     
@@ -157,7 +158,7 @@ print(str(time))
 
 
 # 3
-## I would propose the idea of hosting the script as a webapp using a python framework like Streamlit. The application could be hosted on a number of free hosting sites such as through github or google app engine. The benefit of using a webapp is we can implement a UI to make utilizing the script easier for the coaching staff and they will be able to access the web application from any device with internet connectivity. The UI will be simple and straightforward enough for the coaching staff to use and will include options for coaches to upload their own parquet/pickle files or potentially select from a database of files from certain matches. Initially there will be 2 different data request options to choose from (this could easily be expanded upon later if further functionality is requested). The first would be to request info with certain filters available. For example they can request the average time it took for Team 1 to leave their spawn on T side with 3 or more rifles. The second option would be to generate a heatmap for positional data. For example they could generate a heatmap for Team 2 on T side after they have planted the bomb to see where they like to hide post plant. This heatmap could be overlayed with the actual in game map to further improve visual clarity. Below is a mockup of what the UI could look like for the first data request function
+## I would propose the idea of hosting the script as a webapp using a python framework like Streamlit. The application could be hosted on a number of hosting sites such as through github or google app engine. The benefit of using a webapp is we can implement a UI to make utilizing the script easier for the coaching staff and they will be able to access the web application from any device with internet connectivity. The UI will be simple and straightforward enough for the coaching staff to use and will include options for coaches to upload their own parquet/pickle files or potentially select from a database of files from certain matches. Initially there will be 2 different data request options to choose from (this could easily be expanded upon later if further functionality is requested). The first would be to request info with certain filters available. For example they can request the average time it took for Team 1 to leave their spawn on T side with 3 or more rifles. The second option would be to generate a heatmap for positional data. For example they could generate a heatmap for Team 2 on T side after they have planted the bomb to see where they like to hide post plant. This heatmap could be overlayed with the actual in game map to further improve visual clarity. Below is a mockup of what the UI could look like for the first data request function
 ![](/screenshots/UI.JPG)
 
 ## This application wouldn't require much additional coding beyond creating a simple UI and hooking up the already existing script to the UI. Additional work would include designing the UI and deploying the application which should take less than a week's worth of time in total to get the app deployed.
