@@ -91,7 +91,7 @@ rows = p1.getBoundaryRows(boundary)
                 rows.append(row)
         return rows
 ```
-## Once those rows have been retrieved, we traverse the rows and store the first instance per player per round into a 2d array (the index of the array should matchup with the round number - 1, if the team in question is team 2 then the index will matchup with the round number -16). This marks the first time that a player has entered BombsiteB in a given round. 
+## Once those rows have been retrieved, we traverse the rows and store the first instance per player per round into a 2d array (the index of the array should match up with the round number - 1, if the team in question is team 2 then the index will match up with the round number -16). This marks the first time that a player has entered BombsiteB in a given round. 
 ``` python
 def enterArea(rows):# function which returns a 2d array indexed by round number, within each round contains rows of data for first instance of player data for that round
     playerIndex = -1
@@ -119,7 +119,7 @@ def getTimer(rows, weaponCount):
     print("Requirements met at: "+ str(sorted_rows[weaponCount-1]['seconds'])+" seconds")
     return sorted_rows[weaponCount-1]['seconds']
 ```
-## Here is the code for the outer most method which can be reused to search for the earliest instance of a team entering a given area on a given side with a specific gun count
+## Here is the code for the outermost method which can be reused to search for the earliest instance of a team entering a given area on a given side with a specific gun count
 ```python
 
 def getAvgTime(p, area, team, side, gunCount): # function to get average time entering a certain area by a team on a specific side with a specified number of SMGs or Rifles. p is a ProcessGameState object
@@ -148,7 +148,7 @@ def getAvgTime(p, area, team, side, gunCount): # function to get average time en
     return (timer/roundCount)  
 
 
-time = getAvgTime(p1, "BombsiteB", "Team2", "T", 2) # Retrieving average timer for Team 2 on T side to enter BombsiteB with atleast 2 rifles or SMGs
+time = getAvgTime(p1, "BombsiteB", "Team2", "T", 2) # Retrieving average timer for Team 2 on T side to enter BombsiteB with at least 2 rifles or SMGs
 print(str(time))
 ```
 ## Example output shows that average time for Team 2 on T side to enter BombsiteB with at least 2 rifles or SMGs is 33.5 seconds
