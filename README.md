@@ -3,6 +3,12 @@
 # All source code can be found in ProcessGameState.py and GeniusLeague.ipynb. All sample output and graphs/figures will be included here but can be tested in GeniusLeague.ipynb
 # Answers to each individual question with code snippets and explanations can be found below
 
+## Dependencies
+1. Pandas
+2. Numpy
+3. matplotlib (for heatmap and coordinate plotting)
+4. pyarrow (for read_parquet)
+
 # 1. 
 ## a. 
 ### When initializing a ProcessGameState object, it takes in a parquet file and using pandas read_parquet function loads the data into a pandas dataframe
