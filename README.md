@@ -145,7 +145,7 @@ time = getAvgTime(p1, "BombsiteB", "Team2", "T", 2) # Retrieving average timer f
 print(str(time))
 ```
 ## Example output shows that average time for Team 2 on T side to enter BombsiteB with at least 2 rifles or SMGs is 33.5 seconds
-![](/screenshots/getTime.png)
+![](/screenshots/getTime.JPG)
 
 
 ## c.
