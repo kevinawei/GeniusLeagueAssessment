@@ -1,6 +1,7 @@
 # Genius League SWE Assessment 
 # By Kevin Wei
-# All source code can be found in ProcessGameState.py and GeniusLeague.ipynb
+# All source code can be found in ProcessGameState.py and GeniusLeague.ipynb. 
+# Answers to each individual question with code snippets and explanations can be found below
 
 # 1. 
 ## a. 
@@ -77,11 +78,14 @@ rows = p1.getBoundaryRows(boundary)
 
 ## c.
 
-## Based on the below heatmap we can see that Team 2 likes to position themselves most commonly around (-700,-100), roughly between -800 and -700 x at between -100 and -200 y, and around (100,-950)
+## Based on the below heatmap we can see that Team 2 likes to position themselves most commonly around (-700,-100), relatively frequently at roughly between -800 and -700 x at between -100 and -200 y, and around (100,-950)
 
 ![](/screenshots/2c.png)
 
 
 
 # 3
-## I would propose the idea of hosting the script as a webapp using a python framework like Streamlit. The UI can be pretty barebones and will include options for coaches to upload their own parquet/pickle files or potentially select from a database of files from certain matches. They could then request info using the UI and select how they want to filter the data and what they want returned to them. For example they can request the average time it took for Team 1 to leave their spawn on T side with 3 or more rifles. There would also be an additional option to generate a heatmap with additional filters. For example request a heatmap for Team 2 on T side after they have planted the bomb to see where they like to hide post plant. This heatmap could be overlayed with the actual in game map to improve visual clarity as well. 
+## I would propose the idea of hosting the script as a webapp using a python framework like Streamlit. The application could be hosted on a number of free hosting sites such as through github or google app engine. The benefit of using a webapp is we can implement a UI to make utilizing the script easier for the coaching staff and they will be able to access the web application from any device with internet connectivity. The UI will be simple and straightforward for the coaching staff to use and will include options for coaches to upload their own parquet/pickle files or potentially select from a database of files from certain matches. Initially there will be 2 different data request options to choose from (this could easily be expanded upon later if further functionality is requested). The first would be to request info with certain filters available. For example they can request the average time it took for Team 1 to leave their spawn on T side with 3 or more rifles. The second option would be to generate a heatmap for positional data. For example they could generate a heatmap for Team 2 on T side after they have planted the bomb to see where they like to hide post plant. This heatmap could be overlayed with the actual in game map to further improve visual clarity. Below is a mockup of what the UI could look like for the first data request function
+![](/screenshots/UI.PNG)
+
+## This application wouldn't require much additional coding beyond creating a simple UI and hooking up the already existing script to the UI. Additional work would include designing the UI and deploying the application which should take less than a week's worth of time in total to get the app deployed.
