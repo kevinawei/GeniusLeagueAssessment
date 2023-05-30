@@ -46,12 +46,9 @@ def main():
         row = p1.df.iloc[i]
         team = row['team']
         side = row['side']
-        isAlive = row['is_alive']
         round = row['round_num']
 
-        if team == "Team2" and side == 'T' and isAlive:
+        if team == "Team2" and side == 'T':
             print(round)
-        #for item in inventory:
-            #print(item['weapon_class'])
 
 main()

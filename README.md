@@ -36,10 +36,10 @@ rows = p1.getBoundaryRows(boundary)
                  withinBoundary.append(row[0])
         return withinBoundary
 ```
-### This method first checks that given coordinate's z bound is within a certain range before implementing the raycast algorith. This algorithm determines if a given point is inside of a given polygon by 
+### This method first checks that given coordinate's z bound is within a certain range before implementing the raycast algorithm. This algorithm determines if a given point is inside of a given polygon by first checking that the point is within the y range of the current edge. The second statement checks that a raycast horizontal line would pass through the edge given that the first condition is true. The function keeps track of how many times a horizontal raycast line from the point crosses edges from the polygon. If the number is an odd number then the point is inside the polygon. If the times it crosses the edges is even then the point is outside of the polygon.
 ```python
     def checkBoundary(self,c, boundary): # uses the raycast odd number rule to detect if a point is within the boundaries of a polygon
-        x,y,z = c
+        x,y,z = c #x, y and z coordinates for current row we are checking
         if z>421 or z<285: # first check z bound
             return False
         else: # then implement raycast algorithm
@@ -47,7 +47,7 @@ rows = p1.getBoundaryRows(boundary)
             
             for edge in boundary:
                 (x1, y1), (x2, y2) = edge
-                if (y < y1) != (y<y2) and x < x1 + ((y-y1)/(y2-y1))*(x2-x1):
+                if (y < y1) != (y<y2) and x < x1 + ((y-y1)/(y2-y1))*(x2-x1): # first part of expression checks that the point is in the y range of the current edge
                     count +=1
 
             return count%2 == 1
@@ -66,7 +66,7 @@ rows = p1.getBoundaryRows(boundary)
 
 ![](/screenshots/2a.png)
 
-## We can plot the data to see all the individual coordinates compared to the boundary lines
+## We can plot the data to see all the individual coordinates compared to the boundary lines to confirm the above
 
 ![](/screenshots/2a2.png)
 
@@ -75,5 +75,7 @@ rows = p1.getBoundaryRows(boundary)
 
 
 ## c.
+
+## Based on the below heatmap we can see that Team 2 likes to position themselves most commonly around (-700,-100), roughly between -800 and -700 x at between -100 and -200 y, and around (100,-950)
 
 ![](/screenshots/2c.png)
