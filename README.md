@@ -26,7 +26,7 @@ boundary = [((-1735, 250),(-2024,398)), ((-2024,398), (-2806, 742)),((-2806,742)
 rows = p1.getBoundaryRows(boundary)
 ```
 
-### The getBoundaryRows method iterates through all rows of our pandas dataframe and calls the checkBoundary method to check the coordinates extracted from each individual row
+### The getBoundaryRows method iterates through all rows of our pandas dataframe and calls the checkBoundary method to check the coordinates extracted from each individual row. If the given row is found to be inside the boundary we add the row number to a list which contains all rows that are within the boundary. That list is what is returned from this method
 
 ```python
     def getBoundaryRows(self, boundary):
@@ -37,7 +37,7 @@ rows = p1.getBoundaryRows(boundary)
                  withinBoundary.append(row[0])
         return withinBoundary
 ```
-### This method first checks that given coordinate's z bound is within a certain range before implementing the raycast algorithm. This algorithm determines if a given point is inside of a given polygon by first checking that the point is within the y range of the current edge. The second statement checks that a raycast horizontal line would pass through the edge given that the first condition is true. The function keeps track of how many times a horizontal raycast line from the point crosses edges from the polygon. If the number is an odd number then the point is inside the polygon. If the times it crosses the edges is even then the point is outside of the polygon.
+### The checkBoundary method first checks that given coordinate's z bound is within a certain range before implementing the raycast algorithm. This algorithm determines if a given point is inside of a given polygon by first checking that the point is within the y range of the current edge. The second statement checks that a raycasted horizontal line would pass through one of the edges of the polygon given that the first condition holds true. The function keeps track of how many times a horizontal raycast line from the point crosses edges from the polygon. If the number is an odd number then the point is inside the polygon. If the number of times it crosses the edges is even then the point is outside of the polygon.
 ```python
     def checkBoundary(self,c, boundary): # uses the raycast odd number rule to detect if a point is within the boundaries of a polygon
         x,y,z = c #x, y and z coordinates for current row we are checking
@@ -80,3 +80,8 @@ rows = p1.getBoundaryRows(boundary)
 ## Based on the below heatmap we can see that Team 2 likes to position themselves most commonly around (-700,-100), roughly between -800 and -700 x at between -100 and -200 y, and around (100,-950)
 
 ![](/screenshots/2c.png)
+
+
+
+# 3
+## I would propose the idea of hosting the script as a webapp using a python framework like Streamlit. The UI can be pretty barebones and will include options for coaches to upload their own parquet/pickle files or potentially select from a database of files from certain matches. They could then request info using the UI and select how they want to filter the data and what they want returned to them. For example they can request the average time it took for Team 1 to leave their spawn on T side with 3 or more rifles. There would also be an additional option to generate a heatmap with additional filters. For example request a heatmap for Team 2 on T side after they have planted the bomb to see where they like to hide post plant. This heatmap could be overlayed with the actual in game map to improve visual clarity as well. 
