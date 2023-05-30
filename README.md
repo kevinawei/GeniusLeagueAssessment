@@ -75,7 +75,7 @@ rows = p1.getBoundaryRows(boundary)
 
 ## b. 
 ## The methodology for retrieving the average timer that Team 2 on T side enters BombsiteB with at least 2 rifles or SMGs is as follows. 
-## Firstly the getRows method is called to return rows given the filters specified. 
+## First the getRows() method is called to return rows given the filters specified. 
 ```python
     def getRows(self, area, team, side): # get rows filtered by area, team, and side
         rows = []
@@ -113,7 +113,7 @@ def getTimer(rows, weaponCount):
     print("Requirements met at: "+ str(sorted_rows[weaponCount-1]['seconds'])+" seconds")
     return sorted_rows[weaponCount-1]['seconds']
 ```
-
+## Here is the code for the outer most method
 ```python
 def getAvgTime(p, area, team, side, gunCount): # function to get average time entering a certain area by a team on a specific side with a specified number of SMGs or Rifles
     rows = p.getRows(area, team, side)
