@@ -7,6 +7,7 @@
 ### When initializing a ProcessGameState object, it takes in a parquet file and using pandas read_parquet function loads the data into a pandas dataframe
 
 ``` python
+import pandas as pd
 class ProcessGameState():
     def __init__(self, filename):
         self.df = pd.read_parquet(filename, engine='pyarrow')
