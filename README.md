@@ -74,7 +74,7 @@ rows = p1.getBoundaryRows(boundary)
 
 
 ## b. 
-
+## The methodology for retrieving the average timer that Team 2 on T side enters BombsiteB with atleast 2 rifles or SMGs is as follows. Firstly the getRows method is called to return rows given the filters specified. Once those rows have been retrieved we must first sort the rows by round. Once the rows have been sorted by round we sort within each round by the timer. This way we can get the first instance that a player was in the specified area and move that to a separate array. We can then sort this array again by the timer so that we can access the data in order of who entered the site first (this isn't very computationally expensive as there will only be a maximum of 5 rows to sort). We then access each row in order and retrieve information about each players' inventory. If the combined inventories of checked players contains 2 or more rifles or SMGs then we mark the latest timer as the timer that 2 or more rifles or SMGs entered the Bombsite. We repeat this for every round and then take the total average.
 
 ## c.
 
