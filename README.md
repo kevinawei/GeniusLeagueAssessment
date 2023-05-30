@@ -1,7 +1,7 @@
 # Genius League SWE Assessment 
 # By Kevin Wei
-# All source code can be found in ProcessGameState.py and GeniusLeague.ipynb. All sample output and graphs/figures will be included here but can be tested in GeniusLeague.ipynb
-# Answers to each individual question with code snippets and explanations can be found below
+## All source code can be found in ProcessGameState.py and GeniusLeague.ipynb. All sample output and graphs/figures will be included here but can be tested in GeniusLeague.ipynb
+## Answers to each individual question with code snippets and explanations can be found below
 
 ## Dependencies
 1. Pandas
